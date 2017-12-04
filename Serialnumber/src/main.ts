@@ -4,11 +4,13 @@ import * as path from 'path';
 import * as bodyparser from 'body-parser';
 import * as http from 'http';
 import * as itf from './serialnumber';
+import * as morgan from 'morgan';
 
 let serialnumber: number;
 let file: itf.Serialnumbers;
 const app = express();
 app.use(bodyparser.json());
+app.use(morgan('tiny'));
 app.post('/serialnumber', (req, res) => {
   serialnumber = parseInt(fs.readFileSync(path.join(__dirname, '../number')).toString());
   console.log(serialnumber);
