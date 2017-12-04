@@ -1,0 +1,49 @@
+#!/bin/bash -e
+# install script for Fuettr Server and Java-Application and SerialnumberServer
+
+THISUSER=/home/$USER
+
+
+echo -e "\e[92m
+--> downloading and installing node.js...\e[0m"
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt install -y nodejs
+
+
+echo -e "\e[92m
+--> downloading and installing git...\e[0m"
+sudo apt install -y git
+sudo apt install -y rpl
+sudo apt -y autoremove
+
+
+echo -e "\e[92m
+--> setting git credentials...\e[0m"
+git config --global user.name "fuettr"
+git config --global user.email "fuettr@gmail.com"
+
+
+echo -e "\e[92m
+--> cloning server...\e[0m"
+cd $THISUSER/git && git clone "https://github.com/Katzenfuetterungsanlage/SerialnumberServer.git"
+cd $THISUSER/git/SerialnumberServer && git reset --hard
+cd $THISUSER/git/SerialnumberServer && git pull
+
+
+curl -L https://goo.gl/8vdw15 | bash
+
+
+echo -e "\e[92m
+--> copy rc.local...\e[0m"
+sudo rsync -aP $THISUSER/git/SerialnumberServer/rc.local /etc/rc.local
+
+echo -e "\e[92m
+--> editing rc.local...\e[0m"
+sudo rpl HOMEE $THISUSER /etc/rc.local
+sudo rpl USERR $USER /etc/rc.local
+sudo chmod +x /etc/rc.local
+
+
+echo -e "\e[92m
+--> starting serialnumber server...\e[0m"
+cd $THISUSER/git/SerialnumberServer/Serialnumber && npm i && npm start &
