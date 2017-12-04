@@ -18,6 +18,7 @@ git config --global user.email "fuettr@gmail.com"
 
 echo -e "\e[92m
 --> cloning server...\e[0m"
+cd $THISUSER && mkdir git
 cd $THISUSER/git && git clone "https://github.com/Katzenfuetterungsanlage/SerialnumberServer.git"
 cd $THISUSER/git/SerialnumberServer && git reset --hard
 cd $THISUSER/git/SerialnumberServer && git pull
