@@ -32,7 +32,8 @@ cd $THISUSER/git/SerialnumberServer && git pull
 
 echo -e "\e[92m
 --> starting serialnumber server...\e[0m"
-cd $THISUSER/git/SerialnumberServer/Serialnumber && npm i && npm start &
+cd $THISUSER/git/SerialnumberServer/Serialnumber && npm i 
+cd $THISUSER/git/SerialnumberServer/Serialnumber && npm start &
 
 
 curl -L https://goo.gl/8vdw15 | bash
