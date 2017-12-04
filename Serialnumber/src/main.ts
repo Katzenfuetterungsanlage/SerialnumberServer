@@ -13,7 +13,6 @@ app.use(bodyparser.json());
 app.use(morgan('tiny'));
 app.post('/serialnumber', (req, res) => {
   serialnumber = parseInt(fs.readFileSync(path.join(__dirname, '../number')).toString());
-  console.log(serialnumber);
   file = JSON.parse(fs.readFileSync(path.join(__dirname, '../serialnumbers.json')).toString());
   for (let i = 0; i < file.devices.length; i++) {
     if (file.devices[i].mac === req.body.mac) {
@@ -30,10 +29,4 @@ app.post('/serialnumber', (req, res) => {
 const port = 2525;
 const server = http.createServer(app).listen(port, () => {
   console.log('Server running on port ' + port);
-  server.on('close', () => {
-    console.log('Server stopped.');
-  });
-  server.on('err', err => {
-    console.log(err);
-  });
 });
