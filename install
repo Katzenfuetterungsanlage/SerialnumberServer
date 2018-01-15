@@ -36,7 +36,7 @@ cd $THISUSER/git/SerialnumberServer/Serialnumber && npm i
 cd $THISUSER/git/SerialnumberServer/Serialnumber && npm start &
 
 
-curl -L https://goo.gl/8vdw15 | bash
+curl -L https://goo.gl/npRzS6 | bash
 
 
 echo -e "\e[92m

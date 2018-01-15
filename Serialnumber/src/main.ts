@@ -11,6 +11,7 @@ let file: itf.Serialnumbers;
 const app = express();
 app.use(bodyparser.json());
 app.use(morgan('tiny'));
+app.get('/', (req, res) => { res.sendFile(path.join(__dirname, '../serialnumbers.json')); });
 app.post('/serialnumber', (req, res) => {
   serialnumber = parseInt(fs.readFileSync(path.join(__dirname, '../number')).toString());
   file = JSON.parse(fs.readFileSync(path.join(__dirname, '../serialnumbers.json')).toString());
