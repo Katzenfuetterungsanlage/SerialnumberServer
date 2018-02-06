@@ -1,5 +1,5 @@
 # Installation
 
 ```bash
-curl https://raw.githubusercontent.com/Katzenfuetterungsanlage/SerialnumberServer/master/install | bash
+bash -c "$(curl -s https://raw.githubusercontent.com/Katzenfuetterungsanlage/SerialnumberServer/master/install)"
 ```
